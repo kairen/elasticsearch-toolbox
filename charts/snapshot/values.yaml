@@ -1,0 +1,55 @@
+# Default values for rotate-elasticsearch-index.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nameOverride: ""
+fullnameOverride: ""
+
+labels: []
+
+cronJob:
+  schedule: "@daily"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    backoffLimit: 3
+    activeDeadlineSeconds: 30
+    restartPolicy: OnFailure
+
+elasticsearch:
+  logLevel: 2
+  # This flag take comma-separated value as arguments
+  # and split them accordingly.
+  endpoints: http://elasticsearch-logging:9200
+  # This flag take comma-separated value as arguments
+  # and split them accordingly.
+  indexRegexPatterns: "*-$(date +%Y.%m.%d)"
+  dateFormat: 2006.01.02-15.04.05
+  basicUsername: ""
+  basicPassword: ""
+  sniffer: false
+  retry: 5
+  tls:
+    enable: false
+    skipHostVerify: true
+    ca: ""
+    cert: ""
+    key: ""
+  snapshot:
+    repository: elastic-snapshots
+
+container:
+  imageRepository: quay.io/kairen/elasticsearch-toolbox
+  imageTag: 0.1.0
+  imagePullPolicy: IfNotPresent
+  extraEnvs: []
+  imagePullSecrets: []
+  tolerations: []
+  affinity: {}
+  resources:
+    limits:
+      cpu: 150m
+      memory: 128Mi
+    requests:
+      cpu: 50m
+      memory: 64Mi

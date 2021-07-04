@@ -1,0 +1,8 @@
+description: A Helm chart for rotating Elasticsearch cluster indices
+name: elasticsearch-rotate-index
+version: 0.1.1
+sources:
+- https://github.com/kaireb/elasticsearch-toolbox
+maintainers:
+- name: Kyle Bai
+  email: k2r2.bai@gmail.com
