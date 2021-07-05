@@ -1,5 +1,5 @@
 # Elasticsearch Toolbox
-A collection of tools for maintaining an Elasticsearch cluster. Most tools are wrapped up into a small web server with a UI. These tools are generally written with log searching as the primary use case.
+A tool to maintain an Elasticsearch cluster.
 
 * [x] Rotate indices.
 * [x] Backup indices(repository and snapshot).
